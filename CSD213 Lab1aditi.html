@@ -1,0 +1,71 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+</head>
+
+<body>
+<table id="sampleTable" border="1"> 
+  <tr>
+    <td>Row1 Col1</td> 
+    <td>Row1 Col2</td>
+  </tr> 
+  <tr>
+    <td>Row2 Col1</td> 
+    <td>Row2 Col2</td>
+  </tr> 
+    <tr>
+    <td>Row3 Col1</td> 
+    <td>Row3 Col2</td>
+  </tr> 
+    <tr>
+    <td>Row4 Col1</td> 
+    <td>Row4 Col2</td>
+  </tr> 
+    <tr>
+    <td>Row5 Col1</td> 
+    <td>Row5 Col2</td>
+  </tr> 
+</table><br> 
+<input type="button" onclick="insertRowBottom()" value="Insert row">  
+<input type="button" onclick="deleteRowTop()" value="Delete row from top">  
+<input type="button" onclick="deleteRowBottom()" value="Delete row from bottom">  
+<p id="message"></p>
+</br>
+<script>
+var totalRows = 5; // Initialize with the number of rows already in the table
+
+function insertRowBottom() {
+  var table = document.getElementById("sampleTable");
+  var row = table.insertRow(-1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  totalRows += 1;
+  cell1.innerHTML = "Row" + totalRows + " Col1";
+  cell2.innerHTML = "Row" + totalRows + " Col2";
+  if (table.rows.length > 0) {
+    document.getElementById("message").innerHTML = "";
+  }
+}
+
+function deleteRowTop() {
+  var table = document.getElementById("sampleTable");
+  if (table.rows.length > 0) {
+    table.deleteRow(0);
+  }
+  if (table.rows.length === 0) {
+    document.getElementById("message").innerHTML = "No more rows to delete";
+  }
+}
+
+function deleteRowBottom() {
+  var table = document.getElementById("sampleTable");
+  if (table.rows.length > 0) {
+    table.deleteRow(-1);
+  }
+  if (table.rows.length === 0) {
+    document.getElementById("message").innerHTML = "No more rows to delete";
+  }
+}
+</script>
+</body>
+</html>
